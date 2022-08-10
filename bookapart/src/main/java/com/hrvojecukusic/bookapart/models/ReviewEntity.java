@@ -24,8 +24,9 @@ public class ReviewEntity {
     @JoinColumn(name = "apartment_id", referencedColumnName = "id")
 	private ApartmentEntity apartment;
 	
-	@OneToOne(mappedBy = "review")
-    private BookingEntity booking;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_id", referencedColumnName = "id")
+	private BookingEntity booking;
 	
 	private String content;
 	private String summary;

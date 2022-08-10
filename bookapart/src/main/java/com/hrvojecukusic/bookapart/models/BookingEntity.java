@@ -22,9 +22,8 @@ public class BookingEntity {
 	private Instant lastUpdatedAt;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "review_id", referencedColumnName = "id")
-	private ReviewEntity review;
+	@OneToOne(mappedBy = "booking")
+    private ReviewEntity review;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "apartment_id", referencedColumnName = "id")
