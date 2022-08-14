@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ApartmentController {
@@ -16,11 +16,17 @@ public class ApartmentController {
 	private ApartmentService apartmentService;
 	
 	@GetMapping("apartments")
-	public String getApartments(Model model){
-		
+	public String getApartments(Model model) {
 		List<ApartmentEntity> apartmentList = apartmentService.getApartments();
 		model.addAttribute("apartments", apartmentList);
 		
 		return "apartments";
+	}
+	
+	@PostMapping("apartments/addnew")
+	public String addNew(ApartmentEntity apartment) {
+		apartmentService.save(apartment);
+		
+		return "redirect/apartments";
 	}
 }

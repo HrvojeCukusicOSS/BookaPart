@@ -16,4 +16,8 @@ public class ApartmentService {
 	public List<ApartmentEntity> getApartments(){
 		return apartmentRepository.findAll();
 	}
+	
+	public void save(ApartmentEntity apartment){
+		apartmentRepository.save(apartment);
+	}
 }

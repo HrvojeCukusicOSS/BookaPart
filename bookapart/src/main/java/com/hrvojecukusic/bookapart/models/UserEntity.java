@@ -32,7 +32,6 @@ public class UserEntity {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
-	private String city;
 	private String address;
 	private String mobile;
 	private String email;
@@ -41,22 +40,18 @@ public class UserEntity {
 	private Instant createdAt;
 	private Instant lastUpdatedAt;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dateOfCreation;
 	public UserEntity(Integer id, String firstName, String lastName, String sex, Integer countryid,
-			Integer stateid, Date dateOfBirth, String city, String address, String mobile,
-			String email, String role, Date dateOfCreation, boolean trusted, Instant createdAt, Instant lastUpdatedAt) {
+			Integer stateid, Date dateOfBirth, String address, String mobile,
+			String email, String role, boolean trusted, Instant createdAt, Instant lastUpdatedAt) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.sex = sex;
 		this.dateOfBirth = dateOfBirth;
-		this.city = city;
 		this.address = address;
 		this.mobile = mobile;
 		this.email = email;
 		this.role = role;
-		this.dateOfCreation = dateOfCreation;
 		this.trusted = trusted;
 		this.createdAt = createdAt;
 		this.lastUpdatedAt = lastUpdatedAt;
@@ -93,12 +88,6 @@ public class UserEntity {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
 	public String getAddress() {
 		return address;
 	}
@@ -122,12 +111,6 @@ public class UserEntity {
 	}
 	public void setRole(String role) {
 		this.role = role;
-	}
-	public Date getDateOfCreation() {
-		return dateOfCreation;
-	}
-	public void setDateOfCreation(Date dateOfCreation) {
-		this.dateOfCreation = dateOfCreation;
 	}
 	public boolean getTrusted() {
 		return trusted;
@@ -155,8 +138,8 @@ public class UserEntity {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", sex=" + sex +
-				", dateOfBirth=" + dateOfBirth + ", city=" + city + ", address=" + address + ", mobile=" + mobile
-				+ ", email=" + email + ", role=" + role + ", dateOfCreation=" + dateOfCreation +
-				", trusted=" + trusted + createdAt + ", lastUpdatedAt=" + lastUpdatedAt +  "]";
+				", dateOfBirth=" + dateOfBirth + ", address=" + address + ", mobile=" + mobile
+				+ ", email=" + email + ", role=" + role + ", trusted=" + trusted
+				+ ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt +  "]";
 	}
 }
