@@ -9,8 +9,8 @@
   <meta content="" name="keywords">
   
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/mainfavicon.png" rel="icon">
+  <link href="assets/img/main-apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -54,7 +54,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/mainlogo.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -438,7 +438,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">New apartment</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -477,27 +477,35 @@
             <label for="recipient-name" class="col-form-label">Service fee:</label>
             <input type="text" class="form-control" id="recipient-name" name="serviceFee">
           </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">City:</label>
-            <input type="text" class="form-control" id="recipient-name" name="city">
-          </div>
+          <div class="form-group row">
+          	<label for="recipient-name" class="col-form-label">City:</label>
+    		<select class="form-control" id="cty" name="cty">
+        		<option th:each="city:${cities}"
+                		th:value="${city.id}"
+                		th:text="${city.name}"/>
+    		</select>
+		  </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Address:</label>
             <input type="text" class="form-control" id="recipient-name" name="address">
           </div>
+          <div class="form-group row">
+          	<label for="recipient-name" class="col-form-label">Host:</label>
+    		<select class="form-control" id="hst" name="hst">
+        		<option th:each="host:${hosts}"
+                		th:value="${host.id}"
+                		th:text="${host.name}"/>
+    		</select>
+		  </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Host:</label>
-            <input type="text" class="form-control" id="recipient-name" name="host">
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-primary">Submit</button>
+      	  </div>
+        	<div class="modal-footer">
+          		<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        	</div>
           </div>
-        </form>
-      </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
   <!-- Vendor JS Files -->
