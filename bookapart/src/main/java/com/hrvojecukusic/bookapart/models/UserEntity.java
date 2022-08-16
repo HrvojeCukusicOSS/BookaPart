@@ -20,9 +20,14 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable=false)
 	private Integer id;
+	
+	@Column(name="first_name")
 	private String firstName;
+	@Column(name="last_name")
 	private String lastName;
+	@Column(name="sex")
 	private String sex;
+	
 	@OneToMany(mappedBy="host")
 	private Set<ApartmentEntity> apartments;
 	@OneToMany(mappedBy="guest")
@@ -30,116 +35,21 @@ public class UserEntity {
 	@OneToMany(mappedBy="guest")
 	private Set<InvoiceEntity> invocies;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dateOfBirth;
+	@Column(name="date_of_birht")
+	private Instant dateOfBirth;
+	@Column(name="address")
 	private String address;
+	@Column(name="mobile")
 	private String mobile;
+	@Column(name="email")
 	private String email;
+	@Column(name="role")
 	private String role;
+	@Column(name="trusted")
 	private boolean trusted;
+	@Column(name="created_at")
 	private Instant createdAt;
+	@Column(name="last_updated_at")
 	private Instant lastUpdatedAt;
 	
-	public UserEntity(Integer id, String firstName, String lastName, String sex, Integer countryid,
-			Integer stateid, Date dateOfBirth, String address, String mobile,
-			String email, String role, boolean trusted, Instant createdAt, Instant lastUpdatedAt) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.sex = sex;
-		this.dateOfBirth = dateOfBirth;
-		this.address = address;
-		this.mobile = mobile;
-		this.email = email;
-		this.role = role;
-		this.trusted = trusted;
-		this.createdAt = createdAt;
-		this.lastUpdatedAt = lastUpdatedAt;
-	}
-	public UserEntity() {
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getMobile() {
-		return mobile;
-	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-	public boolean getTrusted() {
-		return trusted;
-	}
-	public void setTrusted(boolean trusted) {
-		this.trusted = trusted;
-	}
-	
-	public Instant getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Instant createdAt) {
-		this.createdAt = createdAt;
-	}
-	
-	public Instant getLastUpdatedAt() {
-		return lastUpdatedAt;
-	}
-
-	public void setLastUpdatedAt(Instant lastUpdatedAt) {
-		this.lastUpdatedAt = lastUpdatedAt;
-	}
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", sex=" + sex +
-				", dateOfBirth=" + dateOfBirth + ", address=" + address + ", mobile=" + mobile
-				+ ", email=" + email + ", role=" + role + ", trusted=" + trusted
-				+ ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt +  "]";
-	}
 }
