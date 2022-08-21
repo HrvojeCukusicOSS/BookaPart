@@ -13,11 +13,27 @@ public class ApartmentService {
 	@Autowired
 	private ApartmentRepository apartmentRepository;
 	
+	public ApartmentService(ApartmentRepository apartmentRepository) {
+		this.apartmentRepository = apartmentRepository;
+	}
+	
 	public List<ApartmentEntity> getApartments(){
 		return apartmentRepository.findAll();
 	}
 	
-	public void save(ApartmentEntity apartment){
-		apartmentRepository.save(apartment);
+	public ApartmentEntity createApartment(ApartmentEntity apartment){
+		return apartmentRepository.save(apartment);
+	}
+	
+	public void deleteApartment(int id) {
+		var apartment = apartmentRepository.findById(id); 
+		
+		apartmentRepository.delete(apartment.get());
+	}
+
+	public ApartmentEntity getApartmentById(int id) {
+		var result = apartmentRepository.findById(id);
+		
+		return result.get();
 	}
 }

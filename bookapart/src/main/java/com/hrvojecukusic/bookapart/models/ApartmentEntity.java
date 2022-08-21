@@ -14,26 +14,26 @@ public class ApartmentEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(nullable=false)
-	public Integer id;
+	private Integer id;
 	
 	@Column(name="name")
-	public String name;
+	private String name;
 	@Column(name="description")
-	public String description;
+	private String description;
 	@Column(name="number_of_guests")
-	public int numberOfGuests;
+	private int numberOfGuests;
 	@Column(name="number_of_rooms")
-	public int numberOfRooms;
+	private int numberOfRooms;
 	@Column(name="number_of_showers")
-	public int numberOfShowers;
+	private int numberOfShowers;
 	@Column(name="base_price")
-	public double basePrice;
+	private double basePrice;
 	@Column(name="cleaning_fee")
-	public double cleaningFee;
+	private double cleaningFee;
 	@Column(name="service_fee")
-	public double serviceFee;
+	private double serviceFee;
 	@Column(name="address")
-	public String address;
+	private String address;
 	@Column(name="created_at")
 	private Instant createdAt;
 	@Column(name="last_updated_at")
