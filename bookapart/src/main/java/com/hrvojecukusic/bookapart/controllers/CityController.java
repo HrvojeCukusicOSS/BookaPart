@@ -14,12 +14,5 @@ import org.springframework.web.bind.annotation.*;
 public class CityController {
 	@Autowired
 	private CityService cityService;
-	
-	@GetMapping("cities")
-	public String getCitys(Model model) {
-		List<CityEntity> cityList = cityService.getCitys();
-		model.addAttribute("cities", cityList);
-		
-		return "cities";
-	}
+
 }

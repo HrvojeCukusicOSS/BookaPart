@@ -15,6 +15,6 @@ public class ApartmentDto {
 	private double cleaningFee;
 	private double serviceFee;
 	private String address;
-	private int city_id;
-	private int host_id;
+	private String city;
+	private String host;
 }

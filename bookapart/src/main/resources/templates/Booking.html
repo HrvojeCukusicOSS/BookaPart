@@ -7,11 +7,10 @@
 
   <meta content="" name="description">
   <meta content="" name="keywords">
-  
+
   <!-- Favicons -->
   <link href="assets/img/mainfavicon.png" rel="icon">
   <link href="assets/img/main-apple-touch-icon.png" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -27,17 +26,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  
-  <style>
-	table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-	}
-
-	th:nth-child(even),td:nth-child(even) {
-      background-color: #D6EEEE;
-	}
-  </style>
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.2
@@ -380,46 +368,18 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-	<h1>List of apartments: </h1>
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addApartment">New apartment</button>
-    <!-- Apartments table -->
-    <table class="apartments-table" >
-                <thead>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Number of guests</th>
-                    <th scope="col">Number of rooms</th>
-                    <th scope="col">Number of showers</th>
-                  	<th scope="col">Base price</th>
-					<th scope="col">Cleaning fee</th>
-					<th scope="col">Service fee</th>
-					<th scope="col">City</th>
-					<th scope="col">Address</th>
-					<th scope="col">Host</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="apartment:${apartments}">
-                    <td th:text="${apartment.name}"></td>
-                    <td th:text="${apartment.description}"></td>
-                    <td th:text="${apartment.numberOfGuests}"></td>
-                    <td th:text="${apartment.numberOfRooms}"></td>
-                    <td th:text="${apartment.numberOfShowers}"></td>
-                    <td th:text="${apartment.basePrice}"></td>
-                    <td th:text="${apartment.cleaningFee}"></td>
-                    <td th:text="${apartment.serviceFee}"></td>
-                    <td th:text="${apartment.city}"></td>
-                    <td th:text="${apartment.address}"></td>
-                    <td th:text="${apartment.host}"></td>
-                    <td>
-                      <a th:href="@{/booking}" class="btn btn-primary">
-                        Book
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+
+    <!-- Booking form -->
+    <h1>Book apartment</h1>
+    <form action="#" th:action="@{/bookapartment}" th:object="${booking}" method="post">
+      <p>Id: <input type="date" th:field="*{fromDate}" /></p>
+      <p>Message: <input type="date" th:field="*{toDate}" /></p>
+      <p>Apartment:
+        <select th:field="*{apartment}">
+        <option th:each="apartment:${apartments}" th:value="${apatment.id}" th:text="${apartment.name}"></option>
+      </select></p>
+      <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
 
   </main><!-- End #main -->
 
@@ -438,84 +398,7 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
-  <div class="modal fade" id="addApartment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New apartment</h5>
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      <div class="modal-body">
-        <form th:action="@{apartments/addnew}" method="post">
-          <div class="form-group">
-            <label for="apartment-name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="apartment-name" name="name">
-          </div>
-          <div class="form-group">
-            <label for="apartment-description" class="col-form-label">Description:</label>
-            <input type="text" class="form-control" id="apartment-description" name="description">
-          </div>
-          <div class="form-group">
-            <label for="apartment-nos" class="col-form-label">Number of guests:</label>
-            <input type="text" class="form-control" id="apartment-nos" name="numberOfGuests">
-          </div>
-          <div class="form-group">
-            <label for="apartment-nor" class="col-form-label">Number of rooms:</label>
-            <input type="text" class="form-control" id="apartment-nor" name="numberOfRooms">
-          </div>
-          <div class="form-group">
-            <label for="apartment-nosow" class="col-form-label">Number of showers:</label>
-            <input type="text" class="form-control" id="apartment-nosow" name="numberOfShowers">
-          </div>
-          <div class="form-group">
-            <label for="apartment-bp" class="col-form-label">Base price:</label>
-            <input type="text" class="form-control" id="apartment-bp" name="basePrice">
-          </div>
-          <div class="form-group">
-            <label for="apartment-cf" class="col-form-label">Cleaning fee:</label>
-            <input type="text" class="form-control" id="apartment-cf" name="cleainigFee">
-          </div>
-          <div class="form-group">
-            <label for="apartment-sf" class="col-form-label">Service fee:</label>
-            <input type="text" class="form-control" id="apartment-sf" name="serviceFee">
-          </div>
-          <div class="form-group row">
-          	<label for="cty" class="col-form-label">City:</label>
-    		<select class="form-control" id="cty" name="cty">
-        		<option th:each="city:${cities}"
-                		th:value="${city.id}"
-                		th:text="${city.name}"/>
-    		</select>
-		  </div>
-          <div class="form-group">
-            <label for="apartment-address" class="col-form-label">Address:</label>
-            <input type="text" class="form-control" id="apartment-address" name="address">
-          </div>
-          <div class="form-group row">
-          	<label for="hst" class="col-form-label">Host:</label>
-    		<select class="form-control" id="hst" name="hst">
-        		<option th:each="host:${hosts}"
-                		th:value="${host.id}"
-                		th:text="${host.name}"/>
-    		</select>
-		  </div>
-          <div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        	<div class="modal-footer">
-          		<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        	</div>
-          </div>
-      </form>
-    </div>
-  </div>
-  </div>
-  </div>
-  </div>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
